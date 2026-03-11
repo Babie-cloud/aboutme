@@ -1,16 +1,59 @@
-# React + Vite
+# 🚀 Portfolio Interactif - [Ton Nom]
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bienvenue sur le dépôt de mon portfolio personnel ! C'est ici que je présente mes projets, mes compétences et mon parcours de développeur.
 
-Currently, two official plugins are available:
+> **Note :** Ce projet est construit avec **React.js**, **Vite** et **Tailwind CSS** pour une performance et une interactivité optimales.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Fonctionnalités
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **⚡ Ultra Rapide** : Développé avec Vite pour un chargement instantané.
+* **🎨 Design Moderne** : Interface responsive et épurée grâce à Tailwind CSS.
+* **🎭 Animations Fluides** : Transitions interactives gérées avec Framer Motion.
+* **✉️ Contact Direct** : Formulaire fonctionnel intégré avec EmailJS.
+* **🌙 Mode Sombre** : Support natif du Dark Mode pour le confort visuel.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠 Ma "Stack" Technique
+
+| Catégorie | Outils |
+| :--- | :--- |
+| **Framework** | React 18+ (Vite) |
+| **Styling** | Tailwind CSS |
+| **Animations** | Framer Motion |
+| **Icônes** | Lucide React |
+| **Déploiement** | [Vercel / Netlify / GitHub Pages] |
+
+---
+
+## 🚀 Installation & Lancement
+
+Si vous souhaitez explorer le projet en local :
+
+1.  **Cloner le dépôt :**
+    ```bash
+    git clone [https://github.com/Babie-cloud/portfolio_d.git](https://github.com/Babie-cloud/portfolio_d.git)
+    ```
+
+2.  **Installer les dépendances :**
+    ```bash
+    npm install
+    ```
+
+3.  **Lancer le serveur de développement :**
+    ```bash
+    npm run dev
+    ```
+
+---
+
+## 📂 Structure du Projet
+
+```text
+src/
+ ├── components/    # Éléments réutilisables (Navbar, Boutons, etc.)
+ ├── sections/      # Grandes sections de la page (Hero, Projets, Contact)
+ ├── assets/        # Images, logos et CV
+ └── data/          # Fichiers JSON/JS pour le contenu dynamique
