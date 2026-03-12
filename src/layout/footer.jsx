@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { Instagram, Twitter, Mail, ArrowUpRight } from 'lucide-react';
+import { useTheme } from "../Pages/ThemeContext";
 
+  
 export default function Footer() {
+  const { isDarkMode } = useTheme();
   return (
     <footer
       id="contact"
@@ -27,7 +30,12 @@ export default function Footer() {
             <motion.a
               href="mailto:hello@karlie.art"
               whileHover={{ x: 10 }}
-              className="group flex items-center gap-4 text-2xl font-light hover:text-red-600 transition-colors text-black"
+              // className="group flex items-center gap-4 text-2xl font-light hover:text-red-600 transition-colors text-black"
+              className={`fixed top-0 left-0 w-full z-[60] px-6 py-5 flex justify-between items-center transition-colors duration-700 border-b ${
+        isDarkMode 
+          ? "bg-[#0a0a0a]/90 border-white/10 text-white" 
+          : "bg-[#fdfcf8]/90 border-black/10 text-black"
+      } backdrop-blur-md`}
             >
               <Mail size={24} />
               <span>hello@karlie.art</span>
