@@ -8,22 +8,22 @@ Bienvenue sur le dépôt de mon portfolio personnel ! C'est ici que je présente
 
 ## ✨ Fonctionnalités
 
-* **⚡ Ultra Rapide** : Développé avec Vite pour un chargement instantané.
-* **🎨 Design Moderne** : Interface responsive et épurée grâce à Tailwind CSS.
-* **🎭 Animations Fluides** : Transitions interactives gérées avec Framer Motion.
-* **✉️ Contact Direct** : Formulaire fonctionnel intégré avec EmailJS.
-* **🌙 Mode Sombre** : Support natif du Dark Mode pour le confort visuel.
+- **⚡ Ultra Rapide** : Développé avec Vite pour un chargement instantané.
+- **🎨 Design Moderne** : Interface responsive et épurée grâce à Tailwind CSS.
+- **🎭 Animations Fluides** : Transitions interactives gérées avec Framer Motion.
+- **✉️ Contact Direct** : Formulaire fonctionnel intégré avec EmailJS.
+- **🌙 Mode Sombre** : Support natif du Dark Mode pour le confort visuel.
 
 ---
 
 ## 🛠 Ma "Stack" Technique
 
-| Catégorie | Outils |
-| :--- | :--- |
-| **Framework** | React 18+ (Vite) |
-| **Styling** | Tailwind CSS |
-| **Animations** | Framer Motion |
-| **Icônes** | Lucide React |
+| Catégorie       | Outils                            |
+| :-------------- | :-------------------------------- |
+| **Framework**   | React 18+ (Vite)                  |
+| **Styling**     | Tailwind CSS                      |
+| **Animations**  | Framer Motion                     |
+| **Icônes**      | Lucide React                      |
 | **Déploiement** | [Vercel / Netlify / GitHub Pages] |
 
 ---
@@ -33,11 +33,13 @@ Bienvenue sur le dépôt de mon portfolio personnel ! C'est ici que je présente
 Si vous souhaitez explorer le projet en local :
 
 1.  **Cloner le dépôt :**
+
     ```bash
     git clone [https://github.com/Babie-cloud/portfolio_d.git](https://github.com/Babie-cloud/portfolio_d.git)
     ```
 
 2.  **Installer les dépendances :**
+
     ```bash
     npm install
     ```
@@ -57,3 +59,4 @@ src/
  ├── sections/      # Grandes sections de la page (Hero, Projets, Contact)
  ├── assets/        # Images, logos et CV
  └── data/          # Fichiers JSON/JS pour le contenu dynamique
+```
