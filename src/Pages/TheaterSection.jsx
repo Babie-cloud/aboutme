@@ -44,7 +44,7 @@ export default function TheaterSection() {
               className={`w-full h-full border p-4 backdrop-blur-sm transition-colors ${isDarkMode ? 'border-white/10 bg-white/5' : 'border-black/10 bg-black/5'}`}
             >
               <img
-                src="https://images.unsplash.com/photo-1503073321235-ef4a1b3fe9ad?q=80&w=800"
+                src="/public/img.jpg"
                 alt="Performance"
                 className={`w-full h-full object-cover transition-all duration-1000 grayscale hover:grayscale-0 ${isDarkMode ? 'brightness-75' : ''}`}
               />

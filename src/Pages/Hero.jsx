@@ -18,8 +18,8 @@ export default function Hero() {
         </h2>
 
         <h1 className="font-serif text-7xl md:text-9xl leading-none tracking-tighter text-black dark:text-white transition-colors duration-700">
-          KARLIE <br />
-          <span className="italic opacity-80">GIONA</span>
+          NIYO_ <br />
+          <span className="italic opacity-80">DRUM</span>
         </h1>
 
         <p className="max-w-md mt-8 font-sans text-gray-600 dark:text-gray-400 leading-relaxed border-l-2 border-red-600 pl-4">
