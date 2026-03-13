@@ -1,40 +1,55 @@
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, X, Info } from 'lucide-react';
 import { sketches } from '../data/sketches';
 
+// URL du portrait final (celui que tu as envoyé).
+// Tu peux remplacer cette URL par celle où tu hébergeras ton image.
+const targetPortraitUrl =
+  'https://i.ibb.co/3sX8M8K/image-3.png';
+
 export default function SketchGallery() {
   const [cards, setCards] = useState(sketches);
-  const [exitingId, setExitingId] = useState(null);
-  const [exitDirection, setExitDirection] = useState(null);
-  const [showPortrait, setShowPortrait] = useState(false);
+  const [swipedCount, setSwipedCount] = useState(0);
   const [selectedSketch, setSelectedSketch] = useState(null);
 
   const handleSwipe = (id, direction) => {
-    setExitingId(id);
-    setExitDirection(direction);
+    setSwipedCount((c) => c + 1);
+    // On fait tourner la pile : la carte swipée passe en dessous
+    setCards((prev) => {
+      const idx = prev.findIndex((c) => c.id === id);
+      if (idx === -1) return prev;
+      const copy = [...prev];
+      const [removed] = copy.splice(idx, 1);
+      return [...copy, removed];
+    });
   };
 
-  const handleExitComplete = () => {
-    if (exitingId != null) {
-      setCards((prev) => prev.filter((c) => c.id !== exitingId));
-      setExitingId(null);
-      setExitDirection(null);
-    }
-  };
-
-  useEffect(() => {
-    if (cards.length === 0 && exitingId == null) {
-      setTimeout(() => setShowPortrait(true), 400);
-    }
-  }, [cards.length, exitingId]);
+  // Chaque swipe augmente l'opacité du portrait jusqu'à 1
+  const portraitOpacity = Math.min(swipedCount * 0.2, 1);
 
   return (
     <section
       id="sketches"
       className="relative py-24 min-h-screen flex flex-col items-center justify-center transition-colors duration-700 bg-[#fdfcf8] dark:bg-[#0a0a0a] overflow-hidden"
     >
+      {/* Portrait final en arrière-plan qui se révèle au fur et à mesure des swipes */}
+      <motion.div
+        className="absolute z-0 pointer-events-none flex items-center justify-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: portraitOpacity }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="w-[320px] h-[420px] md:w-[380px] md:h-[500px] border-8 border-double border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-2xl p-3">
+          <img
+            src={targetPortraitUrl}
+            alt="Portrait final"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </motion.div>
+
       <div className="z-10 text-center mb-16 relative px-6">
         <span className="font-serif italic text-3xl text-red-600 dark:text-red-500">01.</span>
         <h2 className="font-serif text-5xl md:text-6xl text-black dark:text-white transition-colors">
@@ -47,34 +62,21 @@ export default function SketchGallery() {
 
       <div className="relative w-[320px] h-[480px] z-20">
         <AnimatePresence>
-          {cards.map((sketch, idx) => (
-            <Card
-              key={sketch.id}
-              sketch={sketch}
-              index={cards.length - 1 - idx}
-              isExiting={exitingId === sketch.id}
-              exitDirection={exitingId === sketch.id ? exitDirection : null}
-              onSwipe={handleSwipe}
-              onExitComplete={handleExitComplete}
-              onInfo={(e) => {
-                e.preventDefault();
-                setSelectedSketch(sketch);
-              }}
-            />
-          ))}
+          {cards
+            .slice(0, 3) // on n'affiche que les 3 du dessus pour une pile lisible
+            .map((sketch, idx) => (
+              <Card
+                key={sketch.id}
+                sketch={sketch}
+                index={idx}
+                onSwipe={handleSwipe}
+                onInfo={(e) => {
+                  e.preventDefault();
+                  setSelectedSketch(sketch);
+                }}
+              />
+            ))}
         </AnimatePresence>
-
-        {showPortrait && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="absolute inset-0 flex items-center justify-center"
-          >
-            <div className="bg-white dark:bg-gray-900 border border-black/10 dark:border-white/10 shadow-2xl p-3">
-              <p className="font-serif italic text-black dark:text-white">Portrait complet.</p>
-            </div>
-          </motion.div>
-        )}
       </div>
 
       <AnimatePresence>
@@ -113,7 +115,7 @@ export default function SketchGallery() {
                   <Link
                     to={`/dessin/${selectedSketch.slug}`}
                     className="mt-8 inline-flex text-[10px] uppercase tracking-widest text-red-600 hover:text-red-500"
-                  >
+                    >
                     Voir la page →
                   </Link>
                 </div>
@@ -126,7 +128,7 @@ export default function SketchGallery() {
   );
 }
 
-function Card({ sketch, index, isExiting, exitDirection, onSwipe, onExitComplete, onInfo }) {
+function Card({ sketch, index, onSwipe, onInfo }) {
   const x = useMotionValue(0);
   const rotate = useTransform(x, [-300, 300], [-12, 12]);
   const likeOpacity = useTransform(x, [60, 180], [0, 1]);
@@ -137,23 +139,16 @@ function Card({ sketch, index, isExiting, exitDirection, onSwipe, onExitComplete
     else if (info.offset.x < -120) onSwipe(sketch.id, 'left');
   };
 
-  const exitX = exitDirection === 'right' ? 500 : -500;
-
   return (
     <motion.div
       drag="x"
       dragConstraints={{ left: -400, right: 400 }}
       dragElastic={0.2}
       onDragEnd={handleDragEnd}
-      style={{ x, rotate, zIndex: index }}
+      style={{ x, rotate, zIndex: 10 - index }}
       initial={{ opacity: 0, y: 20, scale: 0.95 }}
-      animate={
-        isExiting ? { x: exitX, opacity: 0, scale: 0.95 } : { opacity: 1, y: 0, scale: 1 }
-      }
-      transition={isExiting ? { type: 'tween', duration: 0.35 } : { type: 'spring', damping: 25, stiffness: 200 }}
-      onAnimationComplete={() => {
-        if (isExiting) onExitComplete();
-      }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ type: 'spring', damping: 25, stiffness: 200 }}
       className="absolute inset-0 cursor-grab active:cursor-grabbing"
     >
       <div className="w-full h-full bg-white dark:bg-gray-900 border border-black/10 dark:border-white/10 shadow-2xl p-3">
