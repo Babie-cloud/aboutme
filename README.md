@@ -1,4 +1,4 @@
-# 🚀 Portfolio Interactif - [Ton Nom]
+# 🚀 Portfolio Interactif - [Doddie]
 
 Bienvenue sur le dépôt de mon portfolio personnel ! C'est ici que je présente mes projets, mes compétences et mon parcours de développeur.
 
@@ -35,7 +35,7 @@ Si vous souhaitez explorer le projet en local :
 1.  **Cloner le dépôt :**
 
     ```bash
-    git clone [https://github.com/Babie-cloud/portfolio_d.git](https://github.com/Babie-cloud/portfolio_d.git)
+    git clone https://github.com/Babie-cloud/portfolio_d.git
     ```
 
 2.  **Installer les dépendances :**
