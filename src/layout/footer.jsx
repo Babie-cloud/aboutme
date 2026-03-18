@@ -18,9 +18,9 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="font-serif text-5xl md:text-7xl mb-12 text-black dark:text-white transition-colors duration-700"
-          >
-            Parlons de <br />
-            <span className="italic">projets.</span>
+           i18n >
+            Let's talk about <br />
+            <span className="italic" i18n>projects.</span>
           </motion.h2>
 
           <div className="space-y-6">
@@ -29,8 +29,8 @@ export default function Footer() {
               whileHover={{ x: 10 }}
               className="group flex items-center gap-4 text-2xl font-light hover:text-red-600 transition-colors text-black dark:text-white dark:hover:text-red-500"
             >
-              <Mail size={24} />
-              <span>dodivananiyo@gmail.com</span>
+              <Mail size={14} />
+              <span i18n>dodivananiyo@gmail.com</span>
               <ArrowUpRight className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
             </motion.a>
           </div>
@@ -51,7 +51,7 @@ export default function Footer() {
             <p className="font-hand text-3xl mb-2 text-black dark:text-white transition-colors duration-700" style={{ fontFamily: 'cursive' }}>
               Doddie Divana
             </p>
-            <p className="text-[10px] uppercase tracking-[0.2em] opacity-50 text-black dark:text-gray-400 transition-colors duration-700">
+            <p className="text-[10px] uppercase tracking-[0.2em] opacity-50 text-black dark:text-gray-400 transition-colors duration-700" i18n>
               © 2026 — Built with passion in Bujumbura
             </p>
           </div>

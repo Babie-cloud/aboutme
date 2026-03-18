@@ -52,11 +52,11 @@ export default function SketchGallery() {
 
       <div className="z-10 text-center mb-16 relative px-6">
         <span className="font-serif italic text-3xl text-red-600 dark:text-red-500">01.</span>
-        <h2 className="font-serif text-5xl md:text-6xl text-black dark:text-white transition-colors">
-          Le Carnet
+        <h2 className="font-serif text-5xl md:text-6xl text-black dark:text-white transition-colors" i18n>
+          The Notebook
         </h2>
-        <p className="text-[10px] uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400 mt-4">
-          Swipe à droite = like. Chaque dessin a sa page.
+        <p className="text-[10px] uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400 mt-4" i18n>
+          Swipe right to like.
         </p>
       </div>
 
@@ -116,7 +116,7 @@ export default function SketchGallery() {
                     to={`/dessin/${selectedSketch.slug}`}
                     className="mt-8 inline-flex text-[10px] uppercase tracking-widest text-red-600 hover:text-red-500"
                     >
-                    Voir la page →
+                    See the page →
                   </Link>
                 </div>
               </div>
@@ -166,15 +166,15 @@ function Card({ sketch, index, onSwipe, onInfo }) {
         <motion.div
           style={{ opacity: nopeOpacity }}
           className="absolute top-6 right-6 z-30 text-red-500 border-4 border-red-500 px-3 py-1 rotate-[12deg] font-bold"
-        >
-          NON
+        i18n>
+          NO
         </motion.div>
 
         <button
           onClick={onInfo}
           className="absolute bottom-6 left-6 z-30 flex items-center gap-2 text-[10px] uppercase tracking-widest text-white/90 hover:text-white"
         >
-          <Info size={14} /> Détails
+          <Info size={14} i18n/> Détails
         </button>
       </div>
     </motion.div>

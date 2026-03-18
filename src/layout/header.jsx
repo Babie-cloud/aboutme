@@ -63,14 +63,14 @@ export default function Header() {
           to="/"
           className="font-serif italic text-2xl tracking-tighter text-white hover:text-red-400 transition-colors"
         >
-          K.
+          D.
         </Link>
       </div>
       <nav className="hidden md:flex gap-8 text-xs uppercase tracking-widest font-medium">
-        <a href={anchor("#sketches")} className="text-white/90 hover:text-red-400 transition-colors">Carnet</a>
-        <a href={anchor("#theater")} className="text-white/90 hover:text-red-400 transition-colors">Théâtre</a>
-        <a href={anchor("#about")} className="text-white/60 hover:text-red-400 transition-colors">À propos</a>
-        <a href={anchor("#contact")} className="text-white/60 hover:text-red-400 transition-colors">Contact</a>
+        <a href={anchor("#sketches")} className="text-white/90 hover:text-red-400 transition-colors" i18n>Notebook</a>
+        <a href={anchor("#theater")} className="text-white/90 hover:text-red-400 transition-colors" i18n>Theater</a>
+        <a href={anchor("#about")} className="text-white/60 hover:text-red-400 transition-colors" i18n>About</a>
+        <a href={anchor("#contact")} className="text-white/60 hover:text-red-400 transition-colors" i18n>Contact</a>
       </nav>
     </motion.header>
   );

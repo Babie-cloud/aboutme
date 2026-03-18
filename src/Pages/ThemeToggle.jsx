@@ -63,7 +63,7 @@ export default function ThemeToggle() {
           animate={{ y: isDarkMode ? 0 : 5 }}
           className="text-[9px] font-serif italic text-gray-500 dark:text-gray-400 tracking-[0.2em] uppercase block"
           style={{ writingMode: 'vertical-rl' }}
-        >
+        i18n>
           {isDarkMode ? "Allumer la lumière" : "Éteindre la scène"}
         </motion.span>
       </div>

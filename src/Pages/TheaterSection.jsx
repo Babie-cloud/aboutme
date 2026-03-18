@@ -25,14 +25,14 @@ export default function TheaterSection() {
             className="text-black dark:text-white"
           >
             <span className="font-serif italic text-2xl text-red-600 block mb-4">02.</span>
-            <h2 className="font-serif text-6xl md:text-8xl mb-8 leading-tight">
-              Buja sans <br /> <span className="italic">Tabou</span>
+            <h2 className="font-serif text-6xl md:text-8xl mb-8 leading-tight" i18n>
+              Compagnie <br /> <span className="italic">OUF</span>
             </h2>
-            <p className="text-lg md:text-xl font-light leading-relaxed mb-8 opacity-70">
-              Le théâtre est mon autre langage. Avec la troupe, nous brisons les silences et explorons l'humain dans toute sa complexité.
+            <p className="text-lg md:text-xl font-light leading-relaxed mb-8 opacity-70" i18n>
+              Theatre is my other language. With the troupe, we break the silences and explore humanity in all its complexity.
             </p>
-            <button className="px-8 py-3 border border-black/20 dark:border-white/20 rounded-full text-xs uppercase tracking-widest hover:bg-red-700 hover:text-white transition-all">
-              Voir les pièces
+            <button className="px-8 py-3 border border-black/20 dark:border-white/20 rounded-full text-xs uppercase tracking-widest hover:bg-red-700 hover:text-white transition-all" i18n>
+              See the parts
             </button>
           </motion.div>
 
@@ -49,7 +49,7 @@ export default function TheaterSection() {
                 className={`w-full h-full object-cover transition-all duration-1000 grayscale hover:grayscale-0 ${isDarkMode ? 'brightness-75' : ''}`}
               />
               <div className="absolute -bottom-6 -right-6 bg-red-700 p-8 hidden md:block shadow-2xl">
-                <p className="font-serif italic text-2xl text-white">"Le corps ne ment jamais."</p>
+                <p className="font-serif italic text-2xl text-white" i18n>"The body never lies."</p>
               </div>
             </motion.div>
           </div>
