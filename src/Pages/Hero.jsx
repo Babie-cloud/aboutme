@@ -5,7 +5,7 @@ export default function Hero() {
   const { isDarkMode } = useTheme();
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center px-8 md:px-24 py-24 overflow-hidden transition-colors duration-700 bg-[#fdfcf8] dark:bg-[#0a0a0a]">
+    <section className="relative min-h-screen flex flex-col justify-center px-8 md:px-24 py-24 overflow-hidden transition-colors duration-700 ">
       <div className="absolute inset-0 opacity-[0.04] pointer-events-none paper-texture"></div>
 
       <motion.div
