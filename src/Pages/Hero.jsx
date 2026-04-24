@@ -14,16 +14,16 @@ export default function Hero() {
         className="z-10"
       >
         <h2 className="text-2xl md:text-3xl mb-4 text-red-700 dark:text-red-500 font-serif italic" i18n>
-          Draftdesign & Actress
+          Developper Junior & poet lover
         </h2>
 
         <h1 className="font-serif text-7xl md:text-9xl leading-none tracking-tighter text-black dark:text-white transition-colors duration-700">
-          NIYO_ <br />
-          <span className="italic opacity-80">DRUM</span>
+          BABIE_ <br />
+          <span className="italic opacity-80">CLOUD</span>
         </h1>
 
         <p className="max-w-md mt-8 font-sans text-gray-600 dark:text-gray-400 leading-relaxed border-l-2 border-red-600 pl-4" i18n>
-          Capturing the essence of movement in pencil, and the emotion of the text on stage with <span className="font-bold italic" i18n> Divana</span>.
+          Capturing the essence of movement in pencil, and the emotion of the text on stage with <span className="font-bold italic" i18n> Karlie</span>.
         </p>
       </motion.div>
 

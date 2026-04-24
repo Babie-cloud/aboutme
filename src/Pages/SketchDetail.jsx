@@ -14,7 +14,7 @@ export default function SketchDetail() {
     return (
       <div className="min-h-screen bg-[#fdfcf8] dark:bg-[#0a0a0a] transition-colors flex items-center justify-center px-6">
         <div className="text-center">
-          <h1 className="font-serif text-2xl text-black dark:text-white mb-4" i18n>Drawing not found</h1>
+          <h1 className="font-serif text-2xl text-black dark:text-white mb-4" i18n>Page not found :(</h1>
           <Link to="/#sketches" className="text-red-600 underline" i18n>Return to notebook</Link>
         </div>
       </div>

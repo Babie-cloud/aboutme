@@ -4,10 +4,9 @@ import { Link } from 'react-router-dom';
 import { Heart, X, Info } from 'lucide-react';
 import { sketches } from '../data/sketches';
 
-// URL du portrait final (celui que tu as envoyé).
-// Tu peux remplacer cette URL par celle où tu hébergeras ton image.
+
 const targetPortraitUrl =
-  'https://i.ibb.co/3sX8M8K/image-3.png';
+  '../';
 
 export default function SketchGallery() {
   const [cards, setCards] = useState(sketches);
@@ -26,7 +25,6 @@ export default function SketchGallery() {
     });
   };
 
-  // Chaque swipe augmente l'opacité du portrait jusqu'à 1
   const portraitOpacity = Math.min(swipedCount * 0.2, 1);
 
   return (
@@ -34,7 +32,7 @@ export default function SketchGallery() {
       id="sketches"
       className="relative py-24 min-h-screen flex flex-col items-center justify-center transition-colors duration-700 bg-[#fdfcf8] dark:bg-[#0a0a0a] overflow-hidden"
     >
-      {/* Portrait final en arrière-plan qui se révèle au fur et à mesure des swipes */}
+      {/* Les swipes */}
       <motion.div
         className="absolute z-0 pointer-events-none flex items-center justify-center"
         initial={{ opacity: 0 }}
