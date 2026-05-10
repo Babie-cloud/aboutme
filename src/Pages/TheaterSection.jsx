@@ -1,71 +1,170 @@
 import { motion } from 'framer-motion';
 import { useTheme } from '../Pages/ThemeContext';
+import { ArrowUpRight } from 'lucide-react';
+
+const TIMELINE = [
+  {
+    year: '2026',
+    title: 'Alternance recherchée',
+    desc: 'Développement web — ESGI Toulouse',
+    current: true,
+  },
+  {
+    year: '2025',
+    title: '1ère année ESGI',
+    desc: 'Bachelor Informatique, Toulouse. Algo, web, réseaux, bases de données.',
+  },
+  {
+    year: '2024',
+    title: 'Premiers projets perso',
+    desc: 'Premiers repos GitHub, premières lignes React. La curiosité devient passion.',
+  },
+  {
+    year: '2022',
+    title: 'Découverte du code',
+    desc: 'Premiers pas en HTML/CSS. Une porte ouverte sur un monde de créativité technique.',  
+
+  },
+];
 
 export default function TheaterSection() {
   const { isDarkMode } = useTheme();
 
   return (
-    <section id="theater" className="relative py-36 md:py-44 transition-colors duration-700 bg-white dark:bg-[#0d0d0d] overflow-hidden">
-      {/* Background Image avec Overlay adaptable */}
-      <div className="absolute inset-0 opacity-10 dark:opacity-20 pointer-events-none">
+    <section
+      id="about"
+      className="relative py-28 md:py-40 bg-white dark:bg-[#0d0d0d] transition-colors duration-500 overflow-hidden"
+    >
+      {/* Image de fond floue */}
+      <div className="absolute inset-0 opacity-[0.06] dark:opacity-[0.12] pointer-events-none">
         <img
-          src="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?q=80&w=1920"
-          alt="Stage background"
-          className="w-full h-full object-cover blur-[2px]"
+          src="/deux.jpg"
+          alt=""
+          aria-hidden
+          className="w-full h-full object-cover blur-sm"
         />
-        <div className={`absolute inset-0 bg-gradient-to-b ${isDarkMode ? 'from-[#0d0d0d] via-transparent to-[#0d0d0d]' : 'from-white via-transparent to-white'}`}></div>
+        <div
+          className={`absolute inset-0 bg-gradient-to-b ${
+            isDarkMode
+              ? 'from-[#0d0d0d] via-transparent to-[#0d0d0d]'
+              : 'from-white via-transparent to-white'
+          }`}
+        />
       </div>
 
-      <div className="relative z-10 px-8 md:px-24 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <div className="relative z-10 px-6 md:px-20 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+
+          {/* Texte gauche */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
             className="text-black dark:text-white"
           >
-            <span className="font-serif italic text-2xl text-red-600 block mb-4">02.</span>
-            <h2 className="font-serif text-6xl md:text-8xl mb-8 leading-tight" i18n>
-              Compagnie <br /> <span className="italic">OUF</span>
+            <span className="font-serif italic text-red-600 dark:text-red-400 text-2xl block mb-3">
+              02.
+            </span>
+            <h2 className="font-serif text-5xl md:text-7xl mb-8 leading-tight">
+              À propos<br />
+              <span className="italic opacity-75">de moi</span>
             </h2>
-            <p className="text-lg md:text-xl font-light leading-relaxed mb-8 opacity-70" i18n>
-              Theatre is my other language. With the troupe, we break the silences and explore humanity in all its complexity.
+
+            <p className="text-base md:text-lg font-light leading-relaxed mb-5 opacity-70">
+              Je suis <strong className="font-semibold opacity-100">Karlie Giona Cubahiro</strong>,
+              étudiante en 1ère année d'informatique à l'ESGI de Toulouse.
+              Je cherche une alternance en développement web pour construire
+              des projets concrets — et apprendre sur le terrain.
             </p>
-            <button className="px-8 py-3 border border-black/20 dark:border-white/20 rounded-full text-xs uppercase tracking-widest hover:bg-red-700 hover:text-white transition-all" i18n>
-              See the parts
-            </button>
+            <p className="text-base md:text-lg font-light leading-relaxed opacity-70 mb-8">
+              En dehors du code, je suis poète. J'écris des haïkus, je filme
+              des moments avec mes amis, et je crois que la meilleure interface
+              c'est celle qu'on ne remarque pas. La créativité est ce qui lie
+              tout ça ensemble.
+            </p>
+
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest text-red-600 dark:text-red-400 border-b border-red-600/40 pb-0.5 hover:border-red-600 transition-colors group"
+            >
+              Me contacter
+              <ArrowUpRight
+                size={12}
+                className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+              />
+            </a>
           </motion.div>
 
-          <div className="relative aspect-[4/5] md:aspect-square">
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              className={`w-full h-full border p-4 backdrop-blur-sm transition-colors ${isDarkMode ? 'border-white/10 bg-white/5' : 'border-black/10 bg-black/5'}`}
-            >
-              <img
-                src="/public/IMG_2544.jpeg"
-                alt="Performance"
-                className={`w-full h-full object-cover transition-all duration-1000 grayscale hover:grayscale-0 ${isDarkMode ? 'brightness-75' : ''}`}
-              />
-              <div className="absolute -bottom-6 -right-6 bg-red-700 p-8 hidden md:block shadow-2xl">
-                <p className="font-serif italic text-2xl text-white" i18n>"The body never lies."</p>
-              </div>
-            </motion.div>
-          </div>
+          {/* Timeline droite */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="relative"
+          >
+            {/* Ligne verticale */}
+            <div className="absolute left-3 top-2 bottom-2 w-px bg-black/10 dark:bg-white/10" />
+
+            <div className="space-y-9">
+              {TIMELINE.map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="pl-10 relative"
+                >
+                  {/* Dot */}
+                  <div
+                    className={`absolute left-0 top-1 w-6 h-6 rounded-full flex items-center justify-center text-[9px] border transition-colors ${
+                      item.current
+                        ? 'bg-red-600 border-red-600 text-white'
+                        : 'bg-white dark:bg-[#0d0d0d] border-black/20 dark:border-white/20'
+                    }`}
+                  >
+                    {item.current ? '●' : ''}
+                  </div>
+
+                  <span className="text-[10px] uppercase tracking-widest text-red-600 dark:text-red-400 font-mono">
+                    {item.year}
+                  </span>
+                  <h3 className="text-black dark:text-white font-medium mt-0.5">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
 
       {/* Marquee */}
-      <div className={`mt-40 overflow-hidden whitespace-nowrap border-y py-8 ${isDarkMode ? 'border-white/10' : 'border-black/10'}`}>
+      <div
+        className={`mt-32 overflow-hidden whitespace-nowrap border-y py-7 ${
+          isDarkMode ? 'border-white/8' : 'border-black/8'
+        }`}
+      >
         <motion.div
-          animate={{ x: [0, -1000] }}
-          transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-          className="inline-block text-black dark:text-white"
+          animate={{ x: [0, -1200] }}
+          transition={{ duration: 35, repeat: Infinity, ease: 'linear' }}
+          className="inline-block"
         >
-          {["EXPRESSION", "LIBERTÉ", "BUJA SANS TABOU", "MOUVEMENT", "VÉRITÉ"].map((text, i) => (
-            <span key={i} className="text-4xl md:text-7xl font-serif italic mx-12 opacity-10">{text}</span>
-          ))}
+          {['EXPRESSION', 'LIBERTÉ', 'CODE & POÉSIE', 'MOUVEMENT', 'BUILD', 'CRÉER', 'INNOVER'].map(
+            (text, i) => (
+              <span
+                key={i}
+                className="text-4xl md:text-6xl font-serif italic mx-10 opacity-[0.07] text-black dark:text-white"
+              >
+                {text}
+              </span>
+            )
+          )}
         </motion.div>
       </div>
     </section>

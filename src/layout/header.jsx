@@ -1,77 +1,114 @@
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { useLocation, Link } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
+import ThemeToggle from './toogle';
 
 export default function Header() {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [mounted, setMounted] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
-    setMounted(true);
-    const handleMouseMove = (e) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    const fn = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', fn);
+    return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  // Calcul du regard (biais gauche comme l'original)
-  const width = typeof window !== "undefined" ? window.innerWidth : 1200;
-  const height = typeof window !== "undefined" ? window.innerHeight : 800;
-  const normX = mounted ? mousePos.x / width : 0.3;
-  const normY = mounted ? mousePos.y / height : 0.5;
-  const eyeX = (normX - 0.35) * 24; 
-  const eyeY = (normY - 0.5) * 14;
+  // Fermer le menu mobile au changement de route
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location]);
 
-  const location = useLocation();
-  const isHome = location.pathname === "/";
-  const anchor = (hash) => (isHome ? hash : `/#${hash.replace("#", "")}`);
+  const anchor = (hash) => (isHome ? hash : `/${hash}`);
 
-  // Header toujours sombre (en light mode tout le reste est clair, pas le header)
+  const links = [
+    { href: anchor('#sketches'), label: 'Qui suis-je' },
+    { href: anchor('#about'), label: 'À propos' },
+    { href: anchor('#stack'), label: 'Stack' },
+    { href: anchor('#github'), label: 'GitHub' },
+    { href: anchor('#projects'), label: 'Projets' },
+    { href: anchor('#writing'), label: 'Écriture' },
+    { href: anchor('#contact'), label: 'Contact' },
+  ];
+
   return (
-    <motion.header
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className="fixed top-0 left-0 w-full z-[60] px-6 py-5 flex justify-between items-center border-b border-white/10 bg-[#0a0a0a]/95 text-white backdrop-blur-md"
-    >
-      <div className="flex items-center gap-6">
-        <div className="relative">
-          <svg
-            className="absolute -inset-4 w-24 h-20 pointer-events-none opacity-30"
-            viewBox="0 0 96 72"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="0.8"
-            strokeDasharray="2 2"
-            strokeLinecap="round"
+    <>
+      <motion.header
+        initial={{ y: -70, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled || menuOpen
+            ? 'bg-[#0a0a0a]/95 backdrop-blur-md border-b border-white/10'
+            : 'bg-[#0a0a0a]/80 backdrop-blur-sm'
+        }`}
+      >
+        <div className="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+          {/* Logo */}
+          <Link
+            to="/"
+            className="font-serif italic text-2xl text-white hover:text-red-400 transition-colors"
           >
-            <path d="M12 36 Q48 8 84 36 Q48 64 12 36" />
-            <path d="M20 28 L28 20 M48 14 L48 18 M68 20 L76 28" />
-          </svg>
-          <div className="relative w-20 h-12 border-2 border-white rounded-[50%] overflow-hidden bg-gray-900 shadow-[inset_2px_2px_8px_rgba(255,255,255,0.08)]">
-            <motion.div
-              animate={{ x: eyeX, y: eyeY }}
-              transition={{ type: "spring", damping: 20, stiffness: 200 }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-white"
+            K.
+          </Link>
+
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-7">
+            {links.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className="text-[10px] uppercase tracking-widest text-white/70 hover:text-red-400 transition-colors"
+              >
+                {l.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Controls */}
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              onClick={() => setMenuOpen((o) => !o)}
+              className="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-white/15 bg-[#1a1a1a] hover:border-red-500 transition-colors"
+              aria-label="Menu"
             >
-              <div className="w-2 h-2 rounded-full absolute top-1 right-1 bg-gray-800 opacity-90" />
-            </motion.div>
+              {menuOpen
+                ? <X size={15} className="text-white" />
+                : <Menu size={15} className="text-white" />
+              }
+            </button>
           </div>
         </div>
-        <Link
-          to="/"
-          className="font-serif italic text-2xl tracking-tighter text-white hover:text-red-400 transition-colors"
-        >
-          D.
-        </Link>
-      </div>
-      <nav className="hidden md:flex gap-8 text-xs uppercase tracking-widest font-medium">
-        <a href={anchor("#sketches")} className="text-white/90 hover:text-red-400 transition-colors" i18n>Notebook</a>
-        <a href={anchor("#theater")} className="text-white/90 hover:text-red-400 transition-colors" i18n>Theater</a>
-        <a href={anchor("#about")} className="text-white/60 hover:text-red-400 transition-colors" i18n>About</a>
-        <a href={anchor("#contact")} className="text-white/60 hover:text-red-400 transition-colors" i18n>Contact</a>
-      </nav>
-    </motion.header>
+
+        {/* Mobile menu */}
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.25 }}
+              className="md:hidden bg-[#0a0a0a] border-t border-white/10 overflow-hidden"
+            >
+              <nav className="flex flex-col px-5 py-4 gap-1">
+                {links.map((l) => (
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="text-sm uppercase tracking-widest text-white/70 hover:text-red-400 transition-colors py-2.5 border-b border-white/5 last:border-0"
+                  >
+                    {l.label}
+                  </a>
+                ))}
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.header>
+    </>
   );
 }

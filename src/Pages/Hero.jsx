@@ -1,42 +1,79 @@
 import { motion } from 'framer-motion';
-import { useTheme } from '../Pages/ThemeContext';
+import { ChevronDown } from 'lucide-react';
 
 export default function Hero() {
-  const { isDarkMode } = useTheme();
-
   return (
-    <section className="relative min-h-screen flex flex-col justify-center px-8 md:px-24 py-24 overflow-hidden transition-colors duration-700 ">
-      <div className="absolute inset-0 opacity-[0.04] pointer-events-none paper-texture"></div>
+    <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-20 pt-24 pb-16 bg-[#fdfcf8] dark:bg-[#0a0a0a] transition-colors duration-500 overflow-hidden">
 
+      {/* Grain texture subtil */}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+        }}
+      />
+
+      <div className="max-w-5xl mx-auto w-full z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
+          <motion.p
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="text-red-600 dark:text-red-400 font-serif italic text-lg md:text-xl mb-5"
+          >
+            Développeuse Junior &amp; Poète · Toulouse
+          </motion.p>
+
+          <h1 className="font-serif text-[clamp(3.5rem,11vw,8.5rem)] leading-[0.88] tracking-tight text-black dark:text-white mb-8">
+            Karlie_<br />
+            <span className="italic opacity-75">Giona</span>
+          </h1>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.7 }}
+            className="max-w-md text-gray-500 dark:text-gray-400 leading-relaxed border-l-2 border-red-600 pl-4 mb-10 text-sm md:text-base"
+          >
+            Étudiante en 1ère année à l'ESGI Toulouse, je cherche une{' '}
+            <span className="font-semibold text-black dark:text-white">alternance en développement web</span>{' '}
+            pour la rentrée 2026. Je construis des interfaces qui ont une âme.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+            className="flex flex-wrap gap-3"
+          >
+            <a
+              href="#contact"
+              className="px-7 py-3 bg-red-700 text-white text-[10px] uppercase tracking-widest hover:bg-red-800 transition-colors"
+            >
+              Me contacter
+            </a>
+            <a
+              href="#projects"
+              className="px-7 py-3 border border-black/25 dark:border-white/25 text-black dark:text-white text-[10px] uppercase tracking-widest hover:border-red-600 hover:text-red-600 dark:hover:text-red-400 dark:hover:border-red-400 transition-colors"
+            >
+              Mes projets
+            </a>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Scroll hint */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="z-10"
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-25 pointer-events-none"
       >
-        <h2 className="text-2xl md:text-3xl mb-4 text-red-700 dark:text-red-500 font-serif italic" i18n>
-          Developper Junior & poet lover
-        </h2>
-
-        <h1 className="font-serif text-7xl md:text-9xl leading-none tracking-tighter text-black dark:text-white transition-colors duration-700">
-          BABIE_ <br />
-          <span className="italic opacity-80">CLOUD</span>
-        </h1>
-
-        <p className="max-w-md mt-8 font-sans text-gray-600 dark:text-gray-400 leading-relaxed border-l-2 border-red-600 pl-4" i18n>
-          Capturing the essence of movement in pencil, and the emotion of the text on stage with <span className="font-bold italic" i18n> Karlie</span>.
-        </p>
-      </motion.div>
-
-      <motion.div
-        animate={{ y: [0, -10, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute right-[5%] top-[20%] w-[45%] opacity-20 dark:opacity-30 pointer-events-none"
-      >
-        <img
-          src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800"
-          alt="Sketch"
-          className={`w-full h-auto transition-all duration-1000 ${isDarkMode ? 'invert brightness-200 grayscale' : 'mix-blend-multiply'}`}
-        />
+        <span className="text-[9px] uppercase tracking-widest text-black dark:text-white">Scroll</span>
+        <ChevronDown size={13} className="text-black dark:text-white" />
       </motion.div>
     </section>
   );
