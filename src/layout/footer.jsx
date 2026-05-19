@@ -23,63 +23,54 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="py-28 md:py-32 px-6 md:px-20 bg-[#fdfcf8] dark:bg-[#0a0a0a] border-t border-black/5 dark:border-white/8 transition-colors duration-500 relative overflow-hidden"
+      className="relative border-t border-white/[0.06] bg-[#08080a] px-6 py-24 md:px-20 md:py-28"
     >
-      <div className="max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20">
-
-          {/* Gauche — CTA */}
+      <div className="relative z-10 mx-auto max-w-5xl">
+        <div className="grid gap-16 md:grid-cols-2 md:gap-20">
           <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.65 }}
             >
-              <span className="font-serif italic text-red-600 dark:text-red-400 text-2xl block mb-3">
-                07.
-              </span>
-              <h2 className="font-serif text-5xl md:text-6xl text-black dark:text-white mb-10 leading-tight">
-                Travaillons<br />
-                <span className="italic">ensemble.</span>
+              <span className="font-serif text-2xl italic text-red-400/90">07.</span>
+              <h2 className="mt-3 font-serif text-4xl leading-tight text-white md:text-5xl">
+                Travailler
+                <br />
+                ensemble.
               </h2>
 
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-8 leading-relaxed max-w-sm">
-                Disponible pour une alternance dès septembre 2026.
-                N'hésitez pas à me contacter, je réponds dans les 48h.
+              <p className="mt-8 max-w-sm text-sm leading-relaxed text-zinc-500">
+                Je réponds généralement sous 48&nbsp;h pour les projets, collaborations ou pistes qui
+                s&apos;alignent avec mon entrée à Learn IT pour le CDA.
               </p>
 
               <motion.a
                 href="mailto:karliegionacubahiro@gmail.com"
-                whileHover={{ x: 6 }}
-                className="group inline-flex items-center gap-3 text-black dark:text-white hover:text-red-600 dark:hover:text-red-400 transition-colors"
+                whileHover={{ x: 4 }}
+                className="group mt-8 inline-flex items-center gap-3 text-white transition-colors hover:text-red-400"
               >
-                <Mail size={18} className="flex-shrink-0" />
-                <span className="text-sm md:text-base break-all">
-                  karliegionacubahiro@gmail.com
-                </span>
+                <Mail size={18} className="shrink-0" />
+                <span className="break-all text-sm md:text-base">karliegionacubahiro@gmail.com</span>
                 <ArrowUpRight
                   size={14}
-                  className="opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all flex-shrink-0"
+                  className="shrink-0 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"
                 />
               </motion.a>
             </motion.div>
           </div>
 
-          {/* Droite — Socials + Signature */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1 }}
+            transition={{ duration: 0.65, delay: 0.08 }}
             className="flex flex-col justify-between gap-12"
           >
-            {/* Réseaux */}
             <div>
-              <p className="text-[9px] uppercase tracking-[0.25em] text-gray-400 mb-5">
-                Retrouvez-moi sur
-              </p>
-              <div className="flex gap-5">
+              <p className="mb-6 text-[9px] uppercase tracking-[0.28em] text-zinc-500">Réseaux</p>
+              <div className="flex gap-6">
                 {SOCIALS.map(({ href, Icon, label }) => (
                   <a
                     key={label}
@@ -87,10 +78,10 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="group flex items-center gap-2 text-black/60 dark:text-white/60 hover:text-red-600 dark:hover:text-red-400 transition-colors"
+                    className="group flex items-center gap-2 text-zinc-500 transition-colors hover:text-red-400"
                   >
                     <Icon size={20} />
-                    <span className="text-xs text-gray-400 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors hidden sm:block">
+                    <span className="hidden text-xs text-zinc-600 group-hover:text-red-400 sm:inline">
                       {label}
                     </span>
                   </a>
@@ -98,16 +89,12 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Signature */}
-            <div className="border-t border-black/8 dark:border-white/8 pt-6">
-              <p
-                className="text-2xl text-black dark:text-white mb-1"
-                style={{ fontFamily: 'cursive' }}
-              >
+            <div className="border-t border-white/[0.06] pt-8">
+              <p className="text-xl text-white" style={{ fontFamily: 'cursive' }}>
                 Karlie Giona Cubahiro
               </p>
-              <p className="text-[9px] uppercase tracking-[0.2em] text-gray-400">
-                © 2026 — Built with passion in Toulouse
+              <p className="mt-2 text-[9px] uppercase tracking-[0.22em] text-zinc-600">
+                2026 Toulouse
               </p>
             </div>
           </motion.div>

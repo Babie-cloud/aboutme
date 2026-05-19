@@ -1,170 +1,215 @@
 import { motion } from 'framer-motion';
-import { useTheme } from '../Pages/ThemeContext';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, GraduationCap, BookOpen } from 'lucide-react';
 
-const TIMELINE = [
+const EXPERIENCES = [
   {
-    year: '2026',
-    title: 'Alternance recherchée',
-    desc: 'Développement web — ESGI Toulouse',
-    current: true,
+    id: 'ogso',
+    period: 'Nov. 2025 – Jan. 2026',
+    title: 'Stagiaire Développeur Full-Stack',
+    organization: 'Open Global Solutions (OGSo) · Toulouse',
+    focus: 'Développement WooCommerce',
+    bullets: [
+      'Contribution au développement et à la maintenance de fonctionnalités front-end et back-end sur des applications en production (PHP, JavaScript)',
+      'Participation à la recette fonctionnelle : rédaction de cas de test, identification et documentation des anomalies',
+      'Collaboration transverse avec les équipes techniques',
+      'Rédaction de la documentation technique associée aux évolutions livrées',
+    ],
   },
   {
-    year: '2025',
-    title: '1ère année ESGI',
-    desc: 'Bachelor Informatique, Toulouse. Algo, web, réseaux, bases de données.',
-  },
-  {
-    year: '2024',
-    title: 'Premiers projets perso',
-    desc: 'Premiers repos GitHub, premières lignes React. La curiosité devient passion.',
-  },
-  {
-    year: '2022',
-    title: 'Découverte du code',
-    desc: 'Premiers pas en HTML/CSS. Une porte ouverte sur un monde de créativité technique.',  
-
+    id: 'magis',
+    period: 'Avr. 2025',
+    title: 'Stagiaire Développeur Front-End',
+    organization: 'Magis Digital Solutions · Mwaro, Burundi',
+    focus: 'Développement Angular · Figma · GitLab · Linux Ubuntu',
+    bullets: [
+      'Développement de composants Angular dynamiques à partir de maquettes Figma, dans le respect des specs fonctionnelles',
+      'Participation via GitLab',
+      'Rédaction de la documentation technique des composants et animation de points de suivi avec l’équipe',
+      'Développement sous environnement Linux Ubuntu – autonomie sur la configuration du poste',
+    ],
   },
 ];
 
-export default function TheaterSection() {
-  const { isDarkMode } = useTheme();
+const FORMATION = [
+  {
+    period: '2026 – 2027',
+    title: 'Concepteur développeur d’applications — Bac+3',
+    subtitle: 'Learn IT · Brest',
+    detail: 'Alternance · 3 semaines en entreprise / 1 semaine en cours',
+    highlight: true,
+  },
+  {
+    period: '2025 – 2026',
+    title: 'Bac+1 Informatique — Bachelor',
+    subtitle: 'ESGI · Toulouse',
+    detail: 'En cours',
+    highlight: false,
+  },
+  {
+    period: '2022 – 2025',
+    title: 'Bachelor Informatique — Génie logiciel',
+    subtitle: 'Université du Lac Tanganyika · Burundi',
+    detail: 'Mention Satisfaction',
+    highlight: false,
+  },
+];
 
+function ExperienceCard({ job, delay }) {
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 14 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay }}
+      className="rounded-xl border border-white/[0.08] bg-white/[0.03] p-6 shadow-inner shadow-black/40 backdrop-blur-sm"
+    >
+      <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-red-400">{job.period}</p>
+      <h4 className="text-lg font-medium leading-snug text-white md:text-xl">{job.title}</h4>
+      <p className="mt-1 text-sm text-zinc-400">{job.organization}</p>
+      <p className="mt-3 text-xs font-medium text-zinc-500">{job.focus}</p>
+      <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-zinc-300 marker:text-red-500">
+        {job.bullets.map((b, idx) => (
+          <li key={`${job.id}-${idx}`} className="pl-1">
+            {b}
+          </li>
+        ))}
+      </ul>
+    </motion.article>
+  );
+}
+
+function FormationCard({ item, delay }) {
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.45, delay }}
+      className={`relative flex flex-col rounded-2xl border p-6 md:p-7 ${
+        item.highlight
+          ? 'border-red-500/40 bg-gradient-to-b from-red-950/35 to-transparent ring-1 ring-red-500/20'
+          : 'border-white/[0.07] bg-white/[0.02]'
+      }`}
+    >
+      {item.highlight && (
+        <span className="absolute right-4 top-4 rounded-full bg-red-600/90 px-2 py-0.5 text-[9px] uppercase tracking-widest text-white">
+          Priorité
+        </span>
+      )}
+      <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-black/40">
+        {item.highlight ? (
+          <GraduationCap size={20} className="text-red-400" aria-hidden />
+        ) : (
+          <BookOpen size={18} className="text-zinc-400" aria-hidden />
+        )}
+      </div>
+      <p className="font-mono text-[10px] uppercase tracking-widest text-red-400/90">{item.period}</p>
+      <h4 className="mt-3 font-serif text-xl text-white">{item.title}</h4>
+      <p className="mt-1 text-sm text-zinc-400">{item.subtitle}</p>
+      <p className="mt-4 text-sm leading-relaxed text-zinc-300">{item.detail}</p>
+    </motion.article>
+  );
+}
+
+export default function TheaterSection() {
   return (
     <section
       id="about"
-      className="relative py-28 md:py-40 bg-white dark:bg-[#0d0d0d] transition-colors duration-500 overflow-hidden"
+      className="relative overflow-hidden bg-[#0a0a0c] px-6 py-28 md:px-12 md:py-36 lg:px-20"
     >
-      {/* Image de fond floue */}
-      <div className="absolute inset-0 opacity-[0.06] dark:opacity-[0.12] pointer-events-none">
-        <img
-          src="/deux.jpg"
-          alt=""
-          aria-hidden
-          className="w-full h-full object-cover blur-sm"
-        />
-        <div
-          className={`absolute inset-0 bg-gradient-to-b ${
-            isDarkMode
-              ? 'from-[#0d0d0d] via-transparent to-[#0d0d0d]'
-              : 'from-white via-transparent to-white'
-          }`}
-        />
-      </div>
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.5]"
+        style={{
+          background:
+            'radial-gradient(ellipse 70% 50% at 10% 0%, rgb(127 29 29 / 0.25), transparent 50%), radial-gradient(ellipse 50% 40% at 90% 100%, rgb(153 27 27 / 0.12), transparent 45%)',
+        }}
+        aria-hidden
+      />
 
-      <div className="relative z-10 px-6 md:px-20 max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-
-          {/* Texte gauche */}
+      <div className="relative z-10 mx-auto max-w-6xl space-y-20 md:space-y-28">
+        <div className="grid grid-cols-1 items-start gap-14 xl:grid-cols-12 xl:gap-16">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="text-black dark:text-white"
+            transition={{ duration: 0.65 }}
+            className="xl:col-span-5"
           >
-            <span className="font-serif italic text-red-600 dark:text-red-400 text-2xl block mb-3">
-              02.
-            </span>
-            <h2 className="font-serif text-5xl md:text-7xl mb-8 leading-tight">
-              À propos<br />
-              <span className="italic opacity-75">de moi</span>
+            <span className="mb-3 block font-serif text-2xl italic text-red-400">02.</span>
+            <h2 className="mb-10 font-serif text-5xl leading-tight text-white md:text-7xl">
+              À propos
+              <br />
+              <span className="italic text-zinc-500">de moi</span>
             </h2>
 
-            <p className="text-base md:text-lg font-light leading-relaxed mb-5 opacity-70">
-              Je suis <strong className="font-semibold opacity-100">Karlie Giona Cubahiro</strong>,
-              étudiante en 1ère année d'informatique à l'ESGI de Toulouse.
-              Je cherche une alternance en développement web pour construire
-              des projets concrets — et apprendre sur le terrain.
+            <p className="mb-6 text-base font-light leading-relaxed text-zinc-400 md:text-lg">
+              Je suis{' '}
+              <strong className="font-semibold text-zinc-100">Karlie Giona Cubahiro</strong>, développeuse
+              en formation. À la croisée du front, du produit et de la méthodo, je cherche des projets où
+              le code serve un usage réel.
             </p>
-            <p className="text-base md:text-lg font-light leading-relaxed opacity-70 mb-8">
-              En dehors du code, je suis poète. J'écris des haïkus, je filme
-              des moments avec mes amis, et je crois que la meilleure interface
-              c'est celle qu'on ne remarque pas. La créativité est ce qui lie
-              tout ça ensemble.
-            </p>
+
+            <div className="rounded-xl border border-white/[0.08] bg-white/[0.03] px-6 py-5 backdrop-blur-sm">
+              <h3 className="mb-3 text-[10px] uppercase tracking-[0.28em] text-red-400">
+                Ce que je cherche actuellement
+              </h3>
+              <p className="text-sm leading-relaxed text-zinc-300 md:text-base">
+                Une <strong className="text-white">alternance entreprise — école</strong> dans le cadre du{' '}
+                <strong className="text-white">Bac+3 Concepteur développeur d’applications</strong> à{' '}
+                <strong className="text-white">Learn IT (Brest, 2026–2027)</strong>, avec le rythme{' '}
+                <strong className="text-white">3 semaines en entreprise / 1 semaine en cours</strong>, pour
+                approfondir la conception et le développement d’applications avec des cas métier réels.
+              </p>
+            </div>
 
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest text-red-600 dark:text-red-400 border-b border-red-600/40 pb-0.5 hover:border-red-600 transition-colors group"
+              className="group mt-10 inline-flex items-center gap-2 border-b border-red-600/60 pb-0.5 text-[10px] uppercase tracking-widest text-red-400 transition-colors hover:border-red-400"
             >
               Me contacter
               <ArrowUpRight
                 size={12}
-                className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               />
             </a>
           </motion.div>
 
-          {/* Timeline droite */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="relative"
+            transition={{ duration: 0.6, delay: 0.08 }}
+            className="xl:col-span-7"
           >
-            {/* Ligne verticale */}
-            <div className="absolute left-3 top-2 bottom-2 w-px bg-black/10 dark:bg-white/10" />
-
-            <div className="space-y-9">
-              {TIMELINE.map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="pl-10 relative"
-                >
-                  {/* Dot */}
-                  <div
-                    className={`absolute left-0 top-1 w-6 h-6 rounded-full flex items-center justify-center text-[9px] border transition-colors ${
-                      item.current
-                        ? 'bg-red-600 border-red-600 text-white'
-                        : 'bg-white dark:bg-[#0d0d0d] border-black/20 dark:border-white/20'
-                    }`}
-                  >
-                    {item.current ? '●' : ''}
-                  </div>
-
-                  <span className="text-[10px] uppercase tracking-widest text-red-600 dark:text-red-400 font-mono">
-                    {item.year}
-                  </span>
-                  <h3 className="text-black dark:text-white font-medium mt-0.5">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </motion.div>
+            <h3 className="mb-10 text-[10px] uppercase tracking-[0.3em] text-red-400">
+              Expériences professionnelles
+            </h3>
+            <div className="space-y-8">
+              {EXPERIENCES.map((job, i) => (
+                <ExperienceCard key={job.id} job={job} delay={i * 0.06} />
               ))}
             </div>
           </motion.div>
         </div>
-      </div>
 
-      {/* Marquee */}
-      <div
-        className={`mt-32 overflow-hidden whitespace-nowrap border-y py-7 ${
-          isDarkMode ? 'border-white/8' : 'border-black/8'
-        }`}
-      >
         <motion.div
-          animate={{ x: [0, -1200] }}
-          transition={{ duration: 35, repeat: Infinity, ease: 'linear' }}
-          className="inline-block"
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55 }}
+          className="border-t border-white/[0.08] pt-16 md:pt-24"
         >
-          {['EXPRESSION', 'LIBERTÉ', 'CODE & POÉSIE', 'MOUVEMENT', 'BUILD', 'CRÉER', 'INNOVER'].map(
-            (text, i) => (
-              <span
-                key={i}
-                className="text-4xl md:text-6xl font-serif italic mx-10 opacity-[0.07] text-black dark:text-white"
-              >
-                {text}
-              </span>
-            )
-          )}
+          <div className="mb-12 md:mb-14">
+            <h3 className="text-[10px] uppercase tracking-[0.3em] text-red-400">Formation</h3>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-500">
+              Parcours en trois phases : objectif bac+3 CDA avec alternance à Brest.
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+            {FORMATION.map((f, i) => (
+              <FormationCard key={f.title + f.period} item={f} delay={i * 0.06} />
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

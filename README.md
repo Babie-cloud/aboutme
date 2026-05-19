@@ -1,62 +1,63 @@
-# 🚀 Portfolio Interactif - [Doddie]
+# Portfolio interactif — Karlie Giona Cubahiro
 
-Bienvenue sur le dépôt de mon portfolio personnel ! C'est ici que je présente mes projets, mes compétences et mon parcours de développeur.
+Bienvenue sur le dépôt de mon portfolio personnel. C’est ici que je présente mes projets, mes compétences et mon parcours.
 
-> **Note :** Ce projet est construit avec **React.js**, **Vite** et **Tailwind CSS** pour une performance et une interactivité optimales.
-
----
-
-## ✨ Fonctionnalités
-
-- **⚡ Ultra Rapide** : Développé avec Vite pour un chargement instantané.
-- **🎨 Design Moderne** : Interface responsive et épurée grâce à Tailwind CSS.
-- **🎭 Animations Fluides** : Transitions interactives gérées avec Framer Motion.
-- **✉️ Contact Direct** : Formulaire fonctionnel intégré avec EmailJS.
-- **🌙 Mode Sombre** : Support natif du Dark Mode pour le confort visuel.
+> Ce projet utilise **React**, **Vite** et **Tailwind CSS**.
 
 ---
 
-## 🛠 Ma "Stack" Technique
+## Fonctionnalités
 
-| Catégorie       | Outils                            |
-| :-------------- | :-------------------------------- |
-| **Framework**   | React 18+ (Vite)                  |
-| **Styling**     | Tailwind CSS                      |
-| **Animations**  | Framer Motion                     |
-| **Icônes**      | Lucide React                      |
-| **Déploiement** | [Vercel / Netlify / GitHub Pages] |
+- **Performances** : développé avec Vite pour un chargement rapide.
+- **Design** : interface responsive avec Tailwind CSS.
+- **Animations** : transitions avec Framer Motion.
+- **Contact** : liens directs (email et réseaux).
+- **Thème** : mode clair / sombre (classe sur la racine).
 
 ---
 
-## 🚀 Installation & Lancement
+## Stack technique
 
-Si vous souhaitez explorer le projet en local :
-
-1.  **Cloner le dépôt :**
-
-    ```bash
-    git clone https://github.com/Babie-cloud/portfolio_d.git
-    ```
-
-2.  **Installer les dépendances :**
-
-    ```bash
-    npm install
-    ```
-
-3.  **Lancer le serveur de développement :**
-    ```bash
-    npm run dev
-    ```
+| Catégorie      | Outils                            |
+| :------------- | :-------------------------------- |
+| Framework      | React (Vite)                      |
+| Styling        | Tailwind CSS                      |
+| Animations     | Framer Motion                     |
+| Icônes         | Lucide React                      |
+| Déploiement    | Vercel / Netlify / GitHub Pages   |
 
 ---
 
-## 📂 Structure du Projet
+## Installation et lancement
+
+1. Cloner le dépôt :
+
+```bash
+git clone https://github.com/Babie-cloud/portfolio_d.git
+```
+
+2. Installer les dépendances :
+
+```bash
+npm install
+```
+
+3. Lancer le serveur de développement :
+
+```bash
+npm run dev
+```
+
+---
+
+## Structure du projet
 
 ```text
 src/
- ├── components/    # Éléments réutilisables (Navbar, Boutons, etc.)
- ├── sections/      # Grandes sections de la page (Hero, Projets, Contact)
- ├── assets/        # Images, logos et CV
- └── data/          # Fichiers JSON/JS pour le contenu dynamique
+ ├── components/    # Éléments réutilisables
+ ├── layout/        # Header, footer
+ ├── Pages/        # Sections et pages Vite/React
+ └── data/         # Données (ex. croquis)
 ```
+
+Placez votre CV dans `public/` (voir `public/README-CV.txt`).

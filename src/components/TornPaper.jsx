@@ -1,54 +1,39 @@
-import React from 'react';
 export default function TornPaper() {
   return (
     <div
-      className="relative w-full h-16 md:h-20 -mt-1 bg-[#fdfcf8] dark:bg-[#0a0a0a] transition-colors duration-500"
+      className="relative -mt-1 h-16 w-full bg-[#060607] md:h-20"
       aria-hidden="true"
     >
-      {/* Clair */}
       <svg
         viewBox="0 0 1200 80"
         preserveAspectRatio="none"
-        className="absolute inset-0 w-full h-full block dark:hidden"
+        className="absolute inset-0 block h-full w-full"
       >
         <defs>
-          <linearGradient id="tornLight" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#fdfcf8" />
-            <stop offset="100%" stopColor="#f5f0e6" />
+          <linearGradient id="tornDivider" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#09090b" />
+            <stop offset="55%" stopColor="#0f0f12" />
+            <stop offset="100%" stopColor="#141418" />
           </linearGradient>
-          <filter id="shadowLight">
-            <feDropShadow dx="0" dy="2" stdDeviation="1" floodColor="rgba(0,0,0,0.06)" />
+          <linearGradient id="tornGlow" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="transparent" />
+            <stop offset="55%" stopColor="rgba(220,38,38,0.06)" />
+            <stop offset="100%" stopColor="transparent" />
+          </linearGradient>
+          <filter id="dividerShadow">
+            <feDropShadow dx="0" dy="3" stdDeviation="1.5" floodColor="rgba(0,0,0,0.5)" />
           </filter>
         </defs>
         <path
           d="M0,80 L0,45 Q50,35 100,42 Q180,52 250,38 Q320,28 400,45 Q480,58 550,35 Q620,18 700,40 Q780,62 850,32 Q920,8 1000,38 Q1080,68 1150,42 Q1180,30 1200,45 L1200,80 Z"
-          fill="url(#tornLight)"
-          filter="url(#shadowLight)"
+          fill="url(#tornDivider)"
+          filter="url(#dividerShadow)"
         />
-        <path d="M0,80 L1200,80 L1200,85 L0,85 Z" fill="#e8dfc8" />
-      </svg>
-
-      {/* Sombre */}
-      <svg
-        viewBox="0 0 1200 80"
-        preserveAspectRatio="none"
-        className="absolute inset-0 w-full h-full hidden dark:block"
-      >
-        <defs>
-          <linearGradient id="tornDark" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#0a0a0a" />
-            <stop offset="100%" stopColor="#111111" />
-          </linearGradient>
-          <filter id="shadowDark">
-            <feDropShadow dx="0" dy="2" stdDeviation="1" floodColor="rgba(255,255,255,0.03)" />
-          </filter>
-        </defs>
         <path
           d="M0,80 L0,45 Q50,35 100,42 Q180,52 250,38 Q320,28 400,45 Q480,58 550,35 Q620,18 700,40 Q780,62 850,32 Q920,8 1000,38 Q1080,68 1150,42 Q1180,30 1200,45 L1200,80 Z"
-          fill="url(#tornDark)"
-          filter="url(#shadowDark)"
+          fill="url(#tornGlow)"
         />
-        <path d="M0,80 L1200,80 L1200,85 L0,85 Z" fill="#0d0d0d" />
+        <path d="M0,80 L1200,80 L1200,82 L0,82 Z" fill="#0a0a0c" />
       </svg>
     </div>
   );

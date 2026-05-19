@@ -1,10 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: 'class', // <--- C'est ici que la magie opère
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  darkMode: 'class', // Toggle dark mode by adding/removing class on <html>
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       fontFamily: {
@@ -12,11 +9,14 @@ export default {
         sans: ['Inter', 'sans-serif'],
       },
       colors: {
-        // Tu peux définir tes couleurs personnalisées ici si besoin
-        parchment: '#fdfcf8',
+        /** Light theme neutrals — slightly cool gray with room for warm red accents */
+        page: '#e5e7ef',
+        'page-soft': '#eef0f6',
+        parchment: '#e5e7ef',
         ink: '#0d0d0d',
+        brandred: '#b9141e',
       },
     },
   },
   plugins: [],
-}
+};

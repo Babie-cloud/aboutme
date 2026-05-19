@@ -4,20 +4,18 @@
 
 @layer base {
   body {
-    @apply transition-colors duration-700 ease-in-out;
+    @apply min-h-screen bg-[#060607] text-zinc-100 antialiased;
   }
 }
 
-/* Texture de papier qui s'adapte au mode */
 .paper-texture {
   background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
 }
 
-.dark .paper-texture {
-  filter: invert(1) opacity(0.05);
+html.dark .paper-texture {
+  filter: invert(1) opacity(0.035);
 }
 
-/* Curseur personnalisé pour l'ambiance artistique */
-.dark {
+html.dark {
   color-scheme: dark;
 }

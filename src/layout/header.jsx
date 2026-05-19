@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import ThemeToggle from './toogle';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,7 +15,6 @@ export default function Header() {
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  // Fermer le menu mobile au changement de route
   useEffect(() => {
     setMenuOpen(false);
   }, [location]);
@@ -24,12 +22,10 @@ export default function Header() {
   const anchor = (hash) => (isHome ? hash : `/${hash}`);
 
   const links = [
-    { href: anchor('#sketches'), label: 'Qui suis-je' },
-    { href: anchor('#about'), label: 'À propos' },
-    { href: anchor('#stack'), label: 'Stack' },
-    { href: anchor('#github'), label: 'GitHub' },
-    { href: anchor('#projects'), label: 'Projets' },
-    { href: anchor('#writing'), label: 'Écriture' },
+    { href: anchor('#sketches'), label: 'Intro' },
+    { href: anchor('#about'), label: 'Profil' },
+    { href: anchor('#repos'), label: 'Dépôts' },
+    { href: anchor('#cv'), label: 'CV' },
     { href: anchor('#contact'), label: 'Contact' },
   ];
 
@@ -39,67 +35,61 @@ export default function Header() {
         initial={{ y: -70, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed left-0 right-0 top-0 z-50 border-b transition-all duration-300 ${
           scrolled || menuOpen
-            ? 'bg-[#0a0a0a]/95 backdrop-blur-md border-b border-white/10'
-            : 'bg-[#0a0a0a]/80 backdrop-blur-sm'
+            ? 'border-white/[0.08] bg-black/85 backdrop-blur-lg'
+            : 'border-transparent bg-black/65 backdrop-blur-md'
         }`}
       >
-        <div className="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
-          {/* Logo */}
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
           <Link
             to="/"
-            className="font-serif italic text-2xl text-white hover:text-red-400 transition-colors"
+            className="font-serif text-2xl italic text-white transition-colors hover:text-red-400"
           >
             K.
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-7">
+          <nav className="hidden items-center gap-8 lg:flex">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
-                className="text-[10px] uppercase tracking-widest text-white/70 hover:text-red-400 transition-colors"
+                className="text-[10px] uppercase tracking-[0.2em] text-zinc-400 transition-colors hover:text-red-400"
               >
                 {l.label}
               </a>
             ))}
           </nav>
 
-          {/* Controls */}
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-            <button
-              onClick={() => setMenuOpen((o) => !o)}
-              className="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-white/15 bg-[#1a1a1a] hover:border-red-500 transition-colors"
-              aria-label="Menu"
-            >
-              {menuOpen
-                ? <X size={15} className="text-white" />
-                : <Menu size={15} className="text-white" />
-              }
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={() => setMenuOpen((o) => !o)}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-white/[0.04] transition-colors hover:border-red-500/50 lg:hidden"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav-panel"
+            aria-label="Menu"
+          >
+            {menuOpen ? <X size={18} className="text-white" /> : <Menu size={18} className="text-white" />}
+          </button>
         </div>
 
-        {/* Mobile menu */}
         <AnimatePresence>
           {menuOpen && (
             <motion.div
+              id="mobile-nav-panel"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25 }}
-              className="md:hidden bg-[#0a0a0a] border-t border-white/10 overflow-hidden"
+              className="overflow-hidden border-t border-white/[0.06] bg-black/95 lg:hidden"
             >
-              <nav className="flex flex-col px-5 py-4 gap-1">
+              <nav className="flex flex-col gap-px px-5 py-4">
                 {links.map((l) => (
                   <a
                     key={l.href}
                     href={l.href}
                     onClick={() => setMenuOpen(false)}
-                    className="text-sm uppercase tracking-widest text-white/70 hover:text-red-400 transition-colors py-2.5 border-b border-white/5 last:border-0"
+                    className="border-b border-white/[0.04] py-3 text-sm uppercase tracking-widest text-zinc-300 last:border-0 hover:text-red-400"
                   >
                     {l.label}
                   </a>
