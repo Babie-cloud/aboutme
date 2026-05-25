@@ -87,7 +87,7 @@ function CarouselSlide({ card, onExpand }) {
           onClick={() => onExpand(card)}
           className="mt-5 text-[10px] uppercase tracking-[0.25em] text-white/50 transition-colors hover:text-red-400"
         >
-          En savoir plus
+          Learn more
         </button>
       </div>
     </div>
@@ -107,9 +107,9 @@ export default function SketchGallery() {
     <section id="sketches" className="relative overflow-hidden px-4 py-20 md:py-28 lg:py-32">
       <div className="relative z-10 mx-auto mb-12 max-w-3xl px-2 text-center">
         <span className="font-serif text-2xl italic text-red-500/90 md:text-3xl">01.</span>
-        <h2 className="mt-2 font-serif text-4xl tracking-tight text-white md:text-6xl">Qui suis-je</h2>
+        <h2 className="mt-2 font-serif text-4xl tracking-tight text-white md:text-6xl">Who am I</h2>
         <p className="mt-4 text-[10px] uppercase tracking-[0.28em] text-zinc-500">
-          Carrousel — flèches ou pastilles
+          Carousel — arrows or dots to navigate, click cards to expand.
         </p>
       </div>
 

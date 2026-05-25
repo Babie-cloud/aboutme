@@ -10,12 +10,12 @@ export default function SketchDetail() {
   if (!sketch) {
     return (
       <div className="flex min-h-[70vh] flex-col items-center justify-center px-6 pb-20 pt-28">
-        <p className="mb-4 font-serif text-2xl text-white">Sketch introuvable.</p>
+        <p className="mb-4 font-serif text-2xl text-white">Sketch not found.</p>
         <Link
           to="/#sketches"
           className="text-sm uppercase tracking-widest text-red-400 transition-colors hover:text-red-300 hover:underline"
         >
-          Retour
+          Return
         </Link>
       </div>
     );
@@ -33,7 +33,7 @@ export default function SketchDetail() {
           className="mb-10 inline-flex items-center gap-2 text-[10px] uppercase tracking-widest text-zinc-500 transition-colors hover:text-red-400"
         >
           <ArrowLeft size={14} />
-          Retour
+          Return
         </Link>
 
         <div className="mb-8 overflow-hidden rounded-xl border border-white/10 bg-zinc-900/30">

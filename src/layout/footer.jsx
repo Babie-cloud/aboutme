@@ -34,7 +34,7 @@ export default function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.65 }}
             >
-              <span className="font-serif text-2xl italic text-red-400/90">07.</span>
+              <span className="font-serif text-2xl italic text-red-400/90">06.</span>
               <h2 className="mt-3 font-serif text-4xl leading-tight text-white md:text-5xl">
                 Travailler
                 <br />
@@ -42,8 +42,8 @@ export default function Footer() {
               </h2>
 
               <p className="mt-8 max-w-sm text-sm leading-relaxed text-zinc-500">
-                Je réponds généralement sous 48&nbsp;h pour les projets, collaborations ou pistes qui
-                s&apos;alignent avec mon entrée à Learn IT pour le CDA.
+                Ouverte et disponible, je réponds généralement sous 48&nbsp;h.
+                N&apos;hésitez pas à me contacter pour discuter de votre projet ou simplement pour dire bonjour !
               </p>
 
               <motion.a

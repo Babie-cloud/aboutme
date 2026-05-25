@@ -22,7 +22,7 @@ export default function Hero() {
           <h1 className="font-serif text-[clamp(3.25rem,10vw,7.75rem)] leading-[0.9] tracking-tight text-white">
             Karlie_
             <br />
-            <span className="italic text-zinc-400">Giona</span>
+            <span className="italic text-zinc-400">Giona CUBAHIRO</span>
           </h1>
 
           <motion.div
@@ -32,12 +32,12 @@ export default function Hero() {
             className="mt-10 max-w-xl border-l-[3px] border-red-600/80 bg-white/[0.03] px-6 py-5 backdrop-blur-sm"
           >
             <p className="text-sm leading-relaxed text-zinc-400 md:text-base">
-              Première année informatique à l&apos;ESGI Toulouse. Je prépare ensuite le{' '}
-              <strong className="font-medium text-zinc-100">Bac+3 Concepteur développeur
-              d&apos;applications</strong> à{' '}
-              <strong className="font-medium text-zinc-100">Learn IT (Brest)</strong>, en alternance
-              sur 2026–2027 avec un rythme entreprise / école qui me permet de passer du code livré aux
-              cas réels du terrain.
+              First year of computer science at ESGI Toulouse. I am subsequently preparing for the{' '}
+              <strong className="font-medium text-zinc-100">Bachelor&apos;s degree in Application Design
+              and Development</strong> at{' '}
+              <strong className="font-medium text-zinc-100">Learn IT (Brest)</strong>, through a work-study
+              program over 2026–2027 with a company / school rhythm that allows me to bridge the gap between shipped code
+              and real-world field experience.
             </p>
           </motion.div>
 

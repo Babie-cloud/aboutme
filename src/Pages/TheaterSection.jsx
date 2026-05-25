@@ -3,29 +3,29 @@ import { ArrowUpRight, GraduationCap, BookOpen } from 'lucide-react';
 
 const EXPERIENCES = [
   {
-    id: 'ogso',
+    id: ' OGSo',
     period: 'Nov. 2025 – Jan. 2026',
-    title: 'Stagiaire Développeur Full-Stack',
+    title: 'Support Developer Intern',
     organization: 'Open Global Solutions (OGSo) · Toulouse',
-    focus: 'Développement WooCommerce',
+    focus: 'WooCommerce Development',
     bullets: [
-      'Contribution au développement et à la maintenance de fonctionnalités front-end et back-end sur des applications en production (PHP, JavaScript)',
-      'Participation à la recette fonctionnelle : rédaction de cas de test, identification et documentation des anomalies',
-      'Collaboration transverse avec les équipes techniques',
-      'Rédaction de la documentation technique associée aux évolutions livrées',
+      'Contributing to the development and maintenance of front-end and back-end functionalities on production applications (PHP)',
+      'Participation in functional testing: writing test cases, identifying and documenting anomalies.',
+      'Cross-functional collaboration with technical teams and project managers to ensure the quality and relevance of delivered solutions',
+      'Exposure to the e-commerce ecosystem and the specificities of WooCommerce development',
     ],
   },
   {
     id: 'magis',
     period: 'Avr. 2025',
-    title: 'Stagiaire Développeur Front-End',
+    title: 'Front-End Developer Intern',
     organization: 'Magis Digital Solutions · Mwaro, Burundi',
-    focus: 'Développement Angular · Figma · GitLab · Linux Ubuntu',
+    focus: 'Angular Development · Figma · GitLab · Linux Ubuntu',
     bullets: [
-      'Développement de composants Angular dynamiques à partir de maquettes Figma, dans le respect des specs fonctionnelles',
-      'Participation via GitLab',
-      'Rédaction de la documentation technique des composants et animation de points de suivi avec l’équipe',
-      'Développement sous environnement Linux Ubuntu – autonomie sur la configuration du poste',
+      'Development of dynamic Angular components from Figma mockups, respecting functional specifications.',
+      'Participation via GitLab to code reviews, issue tracking, and sprint planning in an Agile environment',
+      'Writing technical documentation for components and leading follow-up meetings with the team',
+      'Development under Linux Ubuntu environment – autonomy in post-configuration and troubleshooting',
     ],
   },
 ];
@@ -33,21 +33,21 @@ const EXPERIENCES = [
 const FORMATION = [
   {
     period: '2026 – 2027',
-    title: 'Concepteur développeur d’applications — Bac+3',
+    title: 'Application designer and developer — Bac+3',
     subtitle: 'Learn IT · Brest',
-    detail: 'Alternance · 3 semaines en entreprise / 1 semaine en cours',
+    detail: 'Alternating work and study: 3 weeks in a company / 1 week in class',
     highlight: true,
   },
   {
     period: '2025 – 2026',
-    title: 'Bac+1 Informatique — Bachelor',
+    title: 'Bac+1 Computer Science — Bachelor',
     subtitle: 'ESGI · Toulouse',
-    detail: 'En cours',
+    detail: 'In progress',
     highlight: false,
   },
   {
     period: '2022 – 2025',
-    title: 'Bachelor Informatique — Génie logiciel',
+    title: 'Bachelor Computer Science — Software Engineering',
     subtitle: 'Université du Lac Tanganyika · Burundi',
     detail: 'Mention Satisfaction',
     highlight: false,
@@ -93,7 +93,7 @@ function FormationCard({ item, delay }) {
     >
       {item.highlight && (
         <span className="absolute right-4 top-4 rounded-full bg-red-600/90 px-2 py-0.5 text-[9px] uppercase tracking-widest text-white">
-          Priorité
+          Priority
         </span>
       )}
       <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-black/40">
@@ -137,36 +137,33 @@ export default function TheaterSection() {
           >
             <span className="mb-3 block font-serif text-2xl italic text-red-400">02.</span>
             <h2 className="mb-10 font-serif text-5xl leading-tight text-white md:text-7xl">
-              À propos
+              About me
               <br />
               <span className="italic text-zinc-500">de moi</span>
             </h2>
 
             <p className="mb-6 text-base font-light leading-relaxed text-zinc-400 md:text-lg">
-              Je suis{' '}
-              <strong className="font-semibold text-zinc-100">Karlie Giona Cubahiro</strong>, développeuse
-              en formation. À la croisée du front, du produit et de la méthodo, je cherche des projets où
-              le code serve un usage réel.
-            </p>
+              My name is {' '}
+              <strong className="font-semibold text-zinc-100">Karlie Giona Cubahiro</strong>, a 21 year old computer science student with a passion for software development. 
+              </p>
 
             <div className="rounded-xl border border-white/[0.08] bg-white/[0.03] px-6 py-5 backdrop-blur-sm">
               <h3 className="mb-3 text-[10px] uppercase tracking-[0.28em] text-red-400">
-                Ce que je cherche actuellement
+                Alternance 2026–2027
               </h3>
               <p className="text-sm leading-relaxed text-zinc-300 md:text-base">
-                Une <strong className="text-white">alternance entreprise — école</strong> dans le cadre du{' '}
-                <strong className="text-white">Bac+3 Concepteur développeur d’applications</strong> à{' '}
-                <strong className="text-white">Learn IT (Brest, 2026–2027)</strong>, avec le rythme{' '}
-                <strong className="text-white">3 semaines en entreprise / 1 semaine en cours</strong>, pour
-                approfondir la conception et le développement d’applications avec des cas métier réels.
-              </p>
+  A <strong className="text-white">work study program (company — school)</strong> as part of the{' '}
+  <strong className="text-white">Bachelor’s degree in Application Design and Development</strong> at{' '}
+  <strong className="text-white">Learn IT (Brest, 2026–2027)</strong>, following a{' '}
+  <strong className="text-white">3 week company / 1 week school</strong> rhythm, to deepen my skills in application design and development through real world business use cases.
+</p>
             </div>
 
             <a
               href="#contact"
               className="group mt-10 inline-flex items-center gap-2 border-b border-red-600/60 pb-0.5 text-[10px] uppercase tracking-widest text-red-400 transition-colors hover:border-red-400"
             >
-              Me contacter
+              Contact me
               <ArrowUpRight
                 size={12}
                 className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -181,8 +178,9 @@ export default function TheaterSection() {
             transition={{ duration: 0.6, delay: 0.08 }}
             className="xl:col-span-7"
           >
+
             <h3 className="mb-10 text-[10px] uppercase tracking-[0.3em] text-red-400">
-              Expériences professionnelles
+              Professional experience
             </h3>
             <div className="space-y-8">
               {EXPERIENCES.map((job, i) => (
@@ -199,10 +197,12 @@ export default function TheaterSection() {
           transition={{ duration: 0.55 }}
           className="border-t border-white/[0.08] pt-16 md:pt-24"
         >
+          
           <div className="mb-12 md:mb-14">
-            <h3 className="text-[10px] uppercase tracking-[0.3em] text-red-400">Formation</h3>
+            <span className="font-serif text-2xl italic text-red-400/90">03.</span> <br />
+            <h3 className="text-[10px] uppercase tracking-[0.3em] text-red-400">Education</h3>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-500">
-              Parcours en trois phases : objectif bac+3 CDA avec alternance à Brest.
+              Path in three phases: goal bac+3 CDA with apprenticeship in Brest.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
